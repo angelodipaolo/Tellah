@@ -15,7 +15,7 @@ extension NSURLRequest: URLRequest {
 }
 
 extension NSMutableURLRequest {
-    func setQueryParameters(parameters: [String: String]) {
+    public func setQueryParameters(parameters: [String: String]) {
         guard
             let url = URL,
             let components = NSURLComponents(URL: url, resolvingAgainstBaseURL: false) else {
@@ -26,11 +26,11 @@ extension NSMutableURLRequest {
         URL = components.URL
     }
     
-    func setJSON(json: AnyObject, options: NSJSONWritingOptions) throws {
+    public func setJSON(json: AnyObject, options: NSJSONWritingOptions) throws {
         HTTPBody = try NSJSONSerialization.dataWithJSONObject(json, options: options)
     }
     
-    func setJSON(json: AnyObject) throws {
+    public func setJSON(json: AnyObject) throws {
         try setJSON(json, options: NSJSONWritingOptions())
     }
 }
